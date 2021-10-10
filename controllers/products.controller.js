@@ -56,7 +56,7 @@ exports.postProducts = (req, res, next) => {
 */
 exports.updateProduct = (req, res, next) => {
   // Validation area
-  // Calling getProductLines with the req and the callback function
+  // Calling updateproduct with the req and the callback function
   products.updateProduct(req, (error, results) => {
     if (error) {
       return res.status(400).send({ success: 0, data: "Bad request" });
