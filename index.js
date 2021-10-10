@@ -18,6 +18,6 @@ app.use(express.urlencoded({
 
 app.use("/products", productsRoutes);
 
-app.listen(3000, () => {
-  console.log("listening...");
-});
+// app.listen(3000, () => {
+//   console.log("listening...");
+// });
