@@ -1,6 +1,9 @@
 const db = require("../config/db.config");
 const mySqlConnect = require("../connection/mysql_connect");
 
+/*
+    Gets all products
+*/
 exports.getProducts = (req, callback) => {
   let error = false;
   mySqlConnect.acquire((error, connection) => {
@@ -8,6 +11,7 @@ exports.getProducts = (req, callback) => {
     if (error) {
       callback(error, null);
     } else {
+      // SQL query
       connection.query(
         "SELECT * from products",  // only interested in the key to productlines
         (error, data) => {
@@ -20,6 +24,10 @@ exports.getProducts = (req, callback) => {
   });
 };
 
+
+/*
+    delete product using id
+*/
 exports.deleteProduct = (req, callback) => {
     let error = false;
     mySqlConnect.acquire((error, connection) => {
@@ -31,7 +39,7 @@ exports.deleteProduct = (req, callback) => {
         let insertQuery = connection.query(connection.format( 
           "DELETE from products WHERE ID = ?", 
           [
-            req.params.id       // parameters matched by position to the question marks
+            req.params.id // parameters matched by position to the question marks
           ]
         ),
         
@@ -47,6 +55,9 @@ exports.deleteProduct = (req, callback) => {
     });
 };
 
+/*
+    create new product
+*/
 exports.postProduct1 = (data, callback) => {
     mySqlConnect.acquire((error, connection) => {
       if (error) {
@@ -73,13 +84,16 @@ exports.postProduct1 = (data, callback) => {
     });
   };
 
-
+/*
+    update product
+*/
   exports.updateProduct = (data, callback) => {
     mySqlConnect.acquire((error, connection) => {
       if (error) {
         callback(error, null);
       } else {
         // The ?? operator puts the id in backtics so the MySQL server won't see the values as Strings
+        // SQL statement
         let insertQuery = connection.format(
           'UPDATE products SET name = ?, description = ? WHERE ID = ?',
           [

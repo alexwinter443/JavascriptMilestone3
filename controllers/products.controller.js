@@ -1,8 +1,11 @@
 const products = require("../services/products.service");
 
+/*
+    get all products
+*/
 exports.getProducts = (req, res, next) => {
   // Validation area
-  // Calling getProductLines with the req and the callback function
+  // Calling getproducts with the req and the callback function
   products.getProducts(req, (error, results) => {
     if (error) {
       return res.status(400).send({ success: 0, data: "Bad request" });
@@ -14,9 +17,12 @@ exports.getProducts = (req, res, next) => {
   });
 };
 
+/*
+    delete product
+*/
 exports.deleteProducts = (req, res, next) => {
     // Validation area
-    // Calling getProductLines with the req and the callback function
+    // Calling deleteproduct with the req and the callback function
     products.deleteProduct(req, (error, results) => {
       if (error) {
         return res.status(400).send({ success: 0, data: "Bad request" });
@@ -28,10 +34,12 @@ exports.deleteProducts = (req, res, next) => {
     });
 };
 
-
+/*
+    create new product
+*/
 exports.postProducts = (req, res, next) => {
     // Validation area
-    // Calling getProductLines with the req and the callback function
+    // Calling postproduct with the req and the callback function
     products.postProduct1(req, (error, results) => {
       if (error) {
         return res.status(400).send({ success: 0, data: "Bad request" });
@@ -43,6 +51,9 @@ exports.postProducts = (req, res, next) => {
     });
 };
 
+/*
+    update product
+*/
 exports.updateProduct = (req, res, next) => {
   // Validation area
   // Calling getProductLines with the req and the callback function

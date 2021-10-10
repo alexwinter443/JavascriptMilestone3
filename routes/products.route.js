@@ -8,7 +8,7 @@ var express = require("express");
 
 var router = express.Router();
 
-// Register multiple productlines routes with the router
+// Register multiple product routes with the router
 // Each call must return the router object so we can chain calls.
 router
   .get(products, productsController.getProducts)
@@ -16,6 +16,6 @@ router
   .post(postProduct, productsController.postProducts)
   .put(updateProduct, productsController.updateProduct);
 
-// add the product line rounter to export
+// add the product router to export
 //
 module.exports = router;
